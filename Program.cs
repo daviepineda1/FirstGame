@@ -1,12 +1,15 @@
 ﻿using System;
 
-namespace HelloWorld
+namespace HiLo
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            Dealer newDealer = new Dealer();
+            newDealer.DisplayInformation();
         }
     }
 }
