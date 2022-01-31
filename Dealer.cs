@@ -10,12 +10,13 @@ namespace HiLo
         int _randomNumber = new Random().Next(1,14);
         int _nextNumber = new Random().Next(1,14);
         int _userPoints = 300;
-        string _userAnswer = "y";
+        string _userAnswer = "Y";
 
 
 
         public void DisplayInformation()
         {
+            Console.WriteLine($"Your current score is: {_userPoints}");
             
 
             while ((_userPoints != 0) && (_userAnswer != "n"))
@@ -28,11 +29,11 @@ namespace HiLo
 
 
 
-                if (highOrLow == "H")
+                if (highOrLow == "h")
                 {
                     if (_randomNumber > _nextNumber)
                     {
-                        Console.Write($"Next card was: {_nextNumber}");
+                        Console.WriteLine($"Next card was: {_nextNumber}");
                         _userPoints += 100;
                         
                     }
