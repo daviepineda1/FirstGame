@@ -7,7 +7,7 @@ namespace HiLo
     {
         
 
-        int _randomNumber = new Random().Next(1,14);
+        int _currentNumber = new Random().Next(1,14);
         int _nextNumber = new Random().Next(1,14);
         int _userPoints = 300;
         string _userAnswer = "Y";
@@ -21,7 +21,7 @@ namespace HiLo
 
             while ((_userPoints != 0) && (_userAnswer != "n"))
             {
-                Console.WriteLine($"The card is: {_randomNumber}");
+                Console.WriteLine($"The card is: {_currentNumber}");
 
                 Console.Write($"Higher or lower? [h/l]: ");
                 var highOrLow = (Console.ReadLine());
@@ -31,7 +31,7 @@ namespace HiLo
 
                 if (highOrLow == "h")
                 {
-                    if (_randomNumber > _nextNumber)
+                    if (_currentNumber < _nextNumber)
                     {
                         Console.WriteLine($"Next card was: {_nextNumber}");
                         _userPoints += 100;
@@ -48,16 +48,16 @@ namespace HiLo
                 }
                 else
                 {
-                    if (_randomNumber > _nextNumber)
+                    if (_currentNumber > _nextNumber)
                     {
                         Console.WriteLine($"Next card was: {_nextNumber}");
-                        _userPoints -= 75;
+                        _userPoints += 100;
                         
                     }
                     else
                     {
                         Console.WriteLine($"Next card was: {_nextNumber}");
-                        _userPoints += 100;
+                        _userPoints -=75;
                     }
 
                 }
