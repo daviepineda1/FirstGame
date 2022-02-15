@@ -6,16 +6,8 @@ namespace HiLo
     {
         static void Main(string[] args)
         {
-
-           
-
-            //giving me a random number between 1-14
-            Dealer newDealer = new Dealer();
-            newDealer.DisplayInformation();
-
-
-            
-           
+            Director player1 = new Director();
+            player1.StartGame();       
             
             
 

@@ -2,80 +2,77 @@ using System;
 
 namespace HiLo
 {
-    
     public class Dealer
     {
-        
-
-        int _currentNumber = new Random().Next(1,14);
-        int _nextNumber = new Random().Next(1,14);
-        int _userPoints = 300;
-        string _userAnswer = "Y";
+        private int _card = -1;
+        private int _previousCard = 0;
 
 
-
-        public void DisplayInformation()
-        {
-            Console.WriteLine($"Your current score is: {_userPoints}");
-            
-
-            while ((_userPoints != 0) && (_userAnswer != "n"))
+        public void DealCard()
+        { 
+            // set _previousCard
+            if(_card != -1)
             {
-                Console.WriteLine($"The card is: {_currentNumber}");
+                _previousCard = _card;
+            }
+            // set _card (random)
+            Random randomCard = new Random();
+            _card = randomCard.Next(1,14);
 
-                Console.Write($"Higher or lower? [h/l]: ");
-                var highOrLow = (Console.ReadLine());
-                var upperHighOrLow = highOrLow.ToUpper();
+            
+            while (_card == _previousCard)
+            {
+                System.Console.WriteLine($"This is: {_card}");
+                _card = randomCard.Next(1,14);
+            }
+    
+             
+        }
 
+        public void DisplayCard(bool isCurrent)
+        {
+            if (isCurrent)
+            {
+                System.Console.WriteLine($"The card is: {_card}");
+            }
+            else
+            {
+                System.Console.WriteLine($"Next card was: {_card}");
+            }
+            // Dislays the Card
 
+        }
 
-                if (highOrLow == "h")
-                {
-                    if (_currentNumber < _nextNumber)
-                    {
-                        Console.WriteLine($"Next card was: {_nextNumber}");
-                        _userPoints += 100;
-                        
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Next card was: {_nextNumber}");
-                        _userPoints -= 75;
-                    }
-                   
+        public bool CheckUserGuess(string _guess)
+        {
 
-
-                }
-                else
-                {
-                    if (_currentNumber > _nextNumber)
-                    {
-                        Console.WriteLine($"Next card was: {_nextNumber}");
-                        _userPoints += 100;
-                        
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Next card was: {_nextNumber}");
-                        _userPoints -=75;
-                    }
-
-                }
-                Console.WriteLine($"Your score is:  {_userPoints}");
-
-                Console.WriteLine($"Play again? [y/n] ");
-                _userAnswer  = Console.ReadLine();
-
-
+            // check if guess was correct 
+            if (_guess == "h" || _guess == "H")
+            {
+                return _card > _previousCard;
+            }
+            else
+            {
+                return _card < _previousCard;
             }
 
         }
 
 
-    
-
-
-
-
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
